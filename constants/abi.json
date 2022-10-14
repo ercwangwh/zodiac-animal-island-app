@@ -1,1 +1,196 @@
-[{"type":"constructor","payable":false,"inputs":[{"type":"address","name":"vrfCoordinatorV2"},{"type":"bytes32","name":"gaslane"},{"type":"uint256","name":"entranceFee"},{"type":"uint64","name":"subsscriptioniId"},{"type":"uint32","name":"callbackGasLimit"},{"type":"uint256","name":"interval"}]},{"type":"error","name":"OnlyCoordinatorCanFulfill","inputs":[{"type":"address","name":"have"},{"type":"address","name":"want"}]},{"type":"error","name":"Raffle__FeeNotEngough","inputs":[]},{"type":"error","name":"Raffle__RaffleNotOpen","inputs":[]},{"type":"error","name":"Raffle__UpKeepNotNeeded","inputs":[{"type":"uint256","name":"currentBalance"},{"type":"uint256","name":"numPlayers"},{"type":"uint256","name":"raffleState"}]},{"type":"event","anonymous":false,"name":"raffleEnter","inputs":[{"type":"address","name":"player","indexed":true}]},{"type":"event","anonymous":false,"name":"raffleEnterUpdate","inputs":[{"type":"address","name":"player","indexed":true}]},{"type":"event","anonymous":false,"name":"requestRaffleWinner","inputs":[{"type":"uint256","name":"requestID","indexed":true}]},{"type":"event","anonymous":false,"name":"winnerPicked","inputs":[{"type":"uint256","name":"ZodiaAnimal","indexed":false}]},{"type":"function","name":"checkUpkeep","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"bytes"}],"outputs":[{"type":"bool","name":"upkeepNeeded"},{"type":"bytes"}]},{"type":"function","name":"enterRaffle","constant":false,"stateMutability":"payable","payable":true,"inputs":[{"type":"uint8","name":"_playerChoosen"}],"outputs":[]},{"type":"function","name":"getEntranceFee","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getInternal","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getLastTimeStamp","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getNumPlayers","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getNumWords","constant":true,"stateMutability":"pure","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getPlayerAddress","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"address"}]},{"type":"function","name":"getPlayerChoosen","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"uint8"}]},{"type":"function","name":"getPlayerEntranceFee","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getPlayerExistIndex","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"address","name":"_addr"},{"type":"uint8","name":"_zodia"}],"outputs":[{"type":"bool"},{"type":"uint256"}]},{"type":"function","name":"getRaffleState","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint8"}]},{"type":"function","name":"getWinnerZodia","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"performUpkeep","constant":false,"payable":false,"inputs":[{"type":"bytes"}],"outputs":[]},{"type":"function","name":"rawFulfillRandomWords","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"requestId"},{"type":"uint256[]","name":"randomWords"}],"outputs":[]}]
+[
+  {
+    "type": "constructor",
+    "payable": false,
+    "inputs": [
+      { "type": "address", "name": "vrfCoordinatorV2" },
+      { "type": "bytes32", "name": "gaslane" },
+      { "type": "uint256", "name": "entranceFee" },
+      { "type": "uint64", "name": "subsscriptioniId" },
+      { "type": "uint32", "name": "callbackGasLimit" },
+      { "type": "uint256", "name": "interval" }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "OnlyCoordinatorCanFulfill",
+    "inputs": [
+      { "type": "address", "name": "have" },
+      { "type": "address", "name": "want" }
+    ]
+  },
+  { "type": "error", "name": "Raffle__FeeNotEngough", "inputs": [] },
+  { "type": "error", "name": "Raffle__RaffleNotOpen", "inputs": [] },
+  {
+    "type": "error",
+    "name": "Raffle__UpKeepNotNeeded",
+    "inputs": [
+      { "type": "uint256", "name": "currentBalance" },
+      { "type": "uint256", "name": "numPlayers" },
+      { "type": "uint256", "name": "raffleState" }
+    ]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "raffleEnter",
+    "inputs": [{ "type": "address", "name": "player", "indexed": true }]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "raffleEnterUpdate",
+    "inputs": [{ "type": "address", "name": "player", "indexed": true }]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "requestRaffleWinner",
+    "inputs": [{ "type": "uint256", "name": "requestID", "indexed": true }]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "winnerPicked",
+    "inputs": [{ "type": "uint256", "name": "ZodiaAnimal", "indexed": false }]
+  },
+  {
+    "type": "function",
+    "name": "checkUpkeep",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "bytes" }],
+    "outputs": [{ "type": "bool", "name": "upkeepNeeded" }, { "type": "bytes" }]
+  },
+  {
+    "type": "function",
+    "name": "enterRaffle",
+    "constant": false,
+    "stateMutability": "payable",
+    "payable": true,
+    "inputs": [{ "type": "uint8", "name": "_playerChoosen" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getEntranceFee",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getInternal",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getLastTimeStamp",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getNumPlayers",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getNumWords",
+    "constant": true,
+    "stateMutability": "pure",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getPlayerAddress",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "uint256", "name": "index" }],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "getPlayerChoosen",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "uint256", "name": "index" }],
+    "outputs": [{ "type": "uint8" }]
+  },
+  {
+    "type": "function",
+    "name": "getPlayerEntranceFee",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "uint256", "name": "index" }],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getPlayerExistIndex",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [
+      { "type": "address", "name": "_addr" },
+      { "type": "uint8", "name": "_zodia" }
+    ],
+    "outputs": [{ "type": "bool" }, { "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getRaffleState",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint8" }]
+  },
+  {
+    "type": "function",
+    "name": "getWinnerZodia",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "performUpkeep",
+    "constant": false,
+    "payable": false,
+    "inputs": [{ "type": "bytes" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "rawFulfillRandomWords",
+    "constant": false,
+    "payable": false,
+    "inputs": [
+      { "type": "uint256", "name": "requestId" },
+      { "type": "uint256[]", "name": "randomWords" }
+    ],
+    "outputs": []
+  }
+]
