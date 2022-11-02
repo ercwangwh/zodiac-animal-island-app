@@ -21,6 +21,8 @@ type CardProps = {
 };
 
 function Card({ cardName, cardDescrption, cardId, updatUI }: CardProps) {
+  const bgUrl = "/images/" + cardName + ".jpg";
+
   const { config } = usePrepareContractWrite({
     addressOrName: "0x4710a165C4944E3069a21B60D8d5CEc650dA59C2",
     contractInterface: [
@@ -74,25 +76,23 @@ function Card({ cardName, cardDescrption, cardId, updatUI }: CardProps) {
   });
 
   if (isSuccess) {
-    // if (typeof readData !== "undefined") {
-    // refetch().then()
     refetch().then(function (result) {
       updatUI(result.data);
       console.log(result.data);
     });
-
-    // }
   }
+
+  console.log(bgUrl);
+  // useEffect(() => {
+  //   updatUI(readData);
+  // }, []);
 
   return (
     <div
-      className="flex justify-center items-center bg-center bg-white rounded-md "
-      style={{
-        backgroundImage: "url('/" + cardName + ".jpg')",
-      }}
+      className="flex justify-center items-center bg-center bg-white rounded-md)"
+      style={{ backgroundImage: `url(${bgUrl})` }}
     >
-      <div className="flex flex-col justify-end w-72 sm:w-72 h-96  text-gray-800 overflow-hidden cursor-pointer ">
-        {/* <img src={"/images/" + cardName + ".jpg"} className=""></img> */}
+      <div className="flex flex-col justify-end w-72 sm:w-72 h-96  text-gray-800 overflow-hidden cursor-pointer">
         <div className="bg-white bg-opacity-95 shadow-md rounded-xl p-4 flex flex-col mx-4 mb-4">
           <h3 className="text-xl font-bold pb-2">{cardName}</h3>
           <p className="text-gray-500 text-sm pb-2">{cardDescrption}</p>
@@ -141,26 +141,30 @@ function PlayGround() {
   const [numberOfPlayers, setNumberOfPlayers] = useState("0");
   const [winnerZodiac, setWinnerZodiac] = useState("0");
 
+  const { data: readData } = useContractReads({
+    contracts: [
+      {
+        ...raffleContract,
+        functionName: "getRaffleState",
+      },
+      {
+        ...raffleContract,
+        functionName: "getEntranceFee",
+      },
+      {
+        ...raffleContract,
+        functionName: "getNumPlayers",
+      },
+      {
+        ...raffleContract,
+        functionName: "getWinnerZodia",
+      },
+    ],
+  });
+
   useEffect(() => {
-    // if (data) {
-    // if (typeof refetchData !== "undefined") {
-    //   const raffleStateFromCall: string = refetchData[0].toString();
-    //   const entranceFeeFromCall: string = data[1].toString();
-    //   const numberOfPlayersFromCall: string = data[2]?.toString();
-    //   const winnerZodiacFromCall: string = data[3].toString();
-    //   setRaffleState(raffleStateFromCall);
-    //   setEntranceFee(entranceFeeFromCall);
-    //   setNumberOfPlayers(numberOfPlayersFromCall);
-    //   setWinnerZodiac(winnerZodiacFromCall);
-    //   // console.log(
-    //   //   "inUpdate",
-    //   //   raffleStateFromCall,
-    //   //   entranceFeeFromCall,
-    //   //   numberOfPlayersFromCall
-    //   // );
-    // }
-    console.log("Data Change");
-  }, [raffleState, entranceFee, numberOfPlayers, winnerZodiac]);
+    updateUIValues(readData);
+  }, []);
 
   async function updateUIValues(data: ethers.utils.Result[] | undefined) {
     if (typeof data !== "undefined") {
@@ -169,10 +173,10 @@ function PlayGround() {
       const numberOfPlayersFromCall: string = data[2]?.toString();
       const winnerZodiacFromCall: string = data[3].toString();
 
-      setRaffleState(data[0].toString());
-      setEntranceFee(data[1].toString());
-      setNumberOfPlayers(data[2]?.toString());
-      setWinnerZodiac(data[3].toString());
+      setRaffleState(raffleStateFromCall);
+      setEntranceFee(entranceFeeFromCall);
+      setNumberOfPlayers(numberOfPlayersFromCall);
+      setWinnerZodiac(winnerZodiacFromCall);
 
       console.log(
         "updateUIvalues",
