@@ -86,10 +86,13 @@ function Card({ cardName, cardDescrption, cardId, updatUI }: CardProps) {
 
   return (
     <div
-      className="flex justify-center items-center bg-center bg-white rounded-md"
-      style={{ backgroundImage: "url('/images/" + cardName + ".jpg')" }}
+      className="flex justify-center items-center bg-center bg-white rounded-md "
+      style={{
+        backgroundImage: "url('../images/" + cardName + ".jpg')",
+      }}
     >
       <div className="flex flex-col justify-end w-72 sm:w-72 h-96  text-gray-800 overflow-hidden cursor-pointer ">
+        {/* <img src={"/images/" + cardName + ".jpg"} className=""></img> */}
         <div className="bg-white bg-opacity-95 shadow-md rounded-xl p-4 flex flex-col mx-4 mb-4">
           <h3 className="text-xl font-bold pb-2">{cardName}</h3>
           <p className="text-gray-500 text-sm pb-2">{cardDescrption}</p>
