@@ -183,7 +183,7 @@ function PlayGround() {
 
   return (
     <div>
-      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="my-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div className="flex items-start rounded-xl bg-white p-4 shadow-lg">
           <div className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-100 bg-blue-50">
             <img src="/images/1.svg" alt="Logo" />

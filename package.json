@@ -12,12 +12,9 @@
     "@rainbow-me/rainbowkit": "^0.7.1",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.1",
-    "moralis": "^2.6.4",
-    "moralis-v1": "^1.11.0",
     "next": "12.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-moralis": "^1.4.2",
     "wagmi": "^0.6.8"
   },
   "devDependencies": {

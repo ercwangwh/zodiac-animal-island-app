@@ -7,6 +7,7 @@ import PlayGround from "../components/PlayGround";
 const Home: NextPage = () => {
   return (
     <div className="m-8">
+      {/* <Test></Test> */}
       <div className=" flex flex-row justify-between">
         <h1 className=" text-3xl font-sans font-bold">
           Zodiac Animal Lottery Island
