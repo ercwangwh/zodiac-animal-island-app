@@ -21,7 +21,7 @@ type CardProps = {
 };
 
 function Card({ cardName, cardDescrption, cardId, updatUI }: CardProps) {
-  const bgUrl = "/images/" + cardName + ".jpg";
+  const bgUrl = "/images/" + cardName + ".svg";
 
   const { config } = usePrepareContractWrite({
     addressOrName: "0x4710a165C4944E3069a21B60D8d5CEc650dA59C2",
@@ -89,7 +89,7 @@ function Card({ cardName, cardDescrption, cardId, updatUI }: CardProps) {
 
   return (
     <div
-      className="flex justify-center items-center bg-center bg-white rounded-md)"
+      className="flex justify-center items-center bg-center bg-white rounded-md"
       style={{ backgroundImage: `url(${bgUrl})` }}
     >
       <div className="flex flex-col justify-end w-72 sm:w-72 h-96  text-gray-800 overflow-hidden cursor-pointer">
